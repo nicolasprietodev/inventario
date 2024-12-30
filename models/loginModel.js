@@ -1,11 +1,11 @@
-import pool from '../connection/pool.js';
+import pool from "../connection/pool.js";
+import bcrypt from "bcrypt";
 
 export class LoginModel {
-
-    static async getCorreo ({ usuario }) {
-        try {
-            const [rows] = await pool.query(
-            `
+  static async getCorreo({ usuario }) {
+    try {
+      const [rows] = await pool.query(
+        `
             SELECT
                 u.usuario,
                 u.password,
@@ -18,29 +18,26 @@ export class LoginModel {
                 u.id_rol = r.id_rol
             WHERE
                 u.usuario = ?`,
-            [usuario]
-            )
+        [usuario]
+      );
 
-            if (rows.length === 0) {
-                throw new Error('Usuario no encontrado')
-            }
+      if (rows.length === 0) {
+        throw new Error("Usuario no encontrado");
+      }
 
-            const user = rows[0]
+      const user = rows[0];
 
-            return {
-                nombre_usuario: user.nombre_usuario,
-                password: user.password,
-            }
-
-        } catch (error) {
-            console.error('error al obtener el usuario', error)
-            throw error
-        }
+      return {
+        nombre_usuario: user.nombre_usuario,
+        password: user.password,
+      };
+    } catch (error) {
+      console.error("error al obtener el usuario", error);
+      throw error;
     }
+  }
 
-    static async validatePassword ({ plainPassword, hashedPassword }) {
-        return await bcrypt.compare(plainPassword, hashedPassword);
-    }
-
-    
+  static async validatePassword(plainPassword, hashedPassword) {
+    return await bcrypt.compare(plainPassword, hashedPassword);
+  }
 }

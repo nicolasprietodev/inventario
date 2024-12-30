@@ -11,9 +11,13 @@ export const createApp =   (models) => {
     app.use(json());
     app.use(cookieParser());
 
-    const { loginRouter } = createRouters(models);
+    const { loginRouter, userRouter, categoriaRouter, proveedoresRouter, productosRouter } = createRouters(models);
 
     app.use('/v1', loginRouter);
+    app.use('/v1', userRouter);
+    app.use('/v1', categoriaRouter);
+    app.use('/v1', proveedoresRouter);
+    app.use('/v1', productosRouter);
 
     return app;
 }

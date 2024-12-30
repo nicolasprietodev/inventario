@@ -1,8 +1,103 @@
+/*-----------------------------------------------LOGIN-----------------------------------------------*/
 ###Login
 POST http://localhost:3000/v1/login
 Content-Type: application/json
 
 {
-  "usuario": "admin",
+  "usuario": "admin1",
   "password": "admin"
+
 }
+/*-----------------------------------------------USUARIOS-----------------------------------------------*/
+###Register (Create User)
+POST http://localhost:3000/v1/register
+Content-Type: application/json
+
+{
+  "usuario": "admin2",
+  "password": "admin",
+  "nombre": "admin2",
+  "roleId": 1
+  }
+###Get All Users
+GET http://localhost:3000/v1/users
+
+###Get User by Id
+GET http://localhost:3000/v1/users/8
+
+###Update User
+PATCH http://localhost:3000/v1/users/2
+Content-Type: application/json
+
+{
+  "usuario": "adminUpdate2",
+  "password": "admin",
+  "nombre": "adminUpdate2",
+  "roleId": 1
+  }
+###Delete User
+DELETE http://localhost:3000/v1/users/2
+/*-----------------------------------------------CATEGORIAS-----------------------------------------------*/
+###Create categoria
+POST http://localhost:3000/v1/categoria
+Content-Type: application/json
+
+{
+  "nombre_categoria": "categoria2",
+  "descripcion": "descripcion2"
+  }
+###Get All Categorias
+GET http://localhost:3000/v1/categorias
+###Get Categoria by Id
+GET http://localhost:3000/v1/categorias/8
+###Update Categoria
+PATCH http://localhost:3000/v1/categorias/1
+Content-Type: application/json
+
+{
+  "nombre_categoria": "categoriaUpdate1",
+  "descripcion": "descripcionUpdate1"
+  }
+###Delete Categoria
+DELETE http://localhost:3000/v1/categorias/1
+
+/*-----------------------------------------------PROVEEDORES-----------------------------------------------*/
+###Create Proveedor
+POST http://localhost:3000/v1/proveedor
+Content-Type: application/json
+
+{
+  "nombre_proveedor": "proveedor3",
+  "telefono": "telefono3",
+  "direccion": "direccion3",
+  "email": "email3"
+  }
+###Get All Proveedores
+GET http://localhost:3000/v1/proveedores
+###Get Proveedor by Id
+GET http://localhost:3000/v1/proveedores/1
+###Update Proveedor
+PATCH http://localhost:3000/v1/proveedores/55
+Content-Type: application/json
+
+{
+  "nombre_proveedor": "proveedorUpdate55",
+  "telefono": "telefonoUpdate1",
+  "direccion": "direccionUpdate1",
+  "email": "emailUpdate1"
+  }
+###Delete Proveedor
+DELETE http://localhost:3000/v1/proveedores/1
+/*-----------------------------------------------PRODUCTOS-----------------------------------------------*/
+###Create Producto
+POST http://localhost:3000/v1/producto
+Content-Type: application/json
+
+{
+  "nombre_producto": "producto1",
+  "descripcion": "descripcion1",
+  "precio": 100,
+  "cantidad": 10,
+  "idCategoria": 1,
+  "idProveedor": 1
+  }

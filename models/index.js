@@ -1,5 +1,13 @@
+import { CategoriaModel } from "./categoriaModel.js";
 import { LoginModel } from "./loginModel.js";
+import { ProductosModel } from "./productosModel.js";
+import { ProveedoresModel } from "./proveedoresModel.js";
+import { UserModel } from "./userModel.js";
 
 export const models = {
-    LoginModel
-}
+  LoginModel,
+  UserModel,
+  CategoriaModel,
+  ProveedoresModel,
+  ProductosModel
+};
