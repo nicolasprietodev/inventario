@@ -98,6 +98,24 @@ Content-Type: application/json
   "descripcion": "descripcion1",
   "precio": 100,
   "cantidad": 10,
-  "idCategoria": 1,
-  "idProveedor": 1
+  "idCategoria": 2,
+  "idProveedor": 2
   }
+###Get All Productos
+GET http://localhost:3000/v1/productos
+###Get Producto by Id
+GET http://localhost:3000/v1/productos/6
+###Update Producto
+PATCH http://localhost:3000/v1/productos/5
+Content-Type: application/json
+
+{
+  "nombre_producto": "productoUpdate1",
+  "descripcion": "descripcionUpdate1",
+  "precio": 100,
+  "cantidad": 10,
+  "idCategoria": 2,
+  "idProveedor": 2
+  }
+###Delete Producto
+DELETE http://localhost:3000/v1/productos/5
