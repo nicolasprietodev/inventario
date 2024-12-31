@@ -7,7 +7,7 @@ export const createMovimientosRouter = ({ movimientosModel }) => {
   const movimientosController = new MovimientosController({ movimientosModel });
 
   router.post('/movimientos', movimientosController.createMovimiento);
-  router.get('/movimientos', movimientosController);
+  router.get('/movimientos', movimientosController.getMovimientos);
 
   return router;
 };

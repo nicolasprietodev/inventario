@@ -119,3 +119,30 @@ Content-Type: application/json
   }
 ###Delete Producto
 DELETE http://localhost:3000/v1/productos/5
+/*-----------------------------------------------MOVIMIENTOS-----------------------------------------------*/
+###Create Movimiento para registrar entrada el tipo de movimiento tiene que decir "entrada" y para registrar salida el tipo de movimiento tiene que decir "salida"  
+POST http://localhost:3000/v1/movimientos
+Content-Type: application/json
+
+{
+  "id_producto": 7,
+  "tipo_movimiento": "entrada",
+  "cantidad": 10,
+  "id_usuario": 1
+  }
+### Obtener todos los movimientos
+GET http://localhost:3000/v1/movimientos
+### Movimientos de un producto específico
+GET http://localhost:3000/v1/movimientos?id_producto=6
+### Movimientos realizados por un usuario específico
+GET http://localhost:3000/v1/movimientos?id_usuario=1
+### Movimientos de tipo "entrada"
+GET http://localhost:3000/v1/movimientos?tipo_movimiento=entrada
+### Movimientos de tipo "salida"
+GET http://localhost:3000/v1/movimientos?tipo_movimiento=salida
+### Movimientos en un rango de fechas
+GET http://localhost:3000/v1/movimientos?fecha_inicio=2024-01-01&fecha_fin=2025-01-01
+### Movimientos con paginación (primeros 10 movimientos)
+GET http://localhost:3000/v1/movimientos?limit=10&offset=0
+### Movimientos con paginación (siguientes 10 movimientos)
+GET http://localhost:3000/v1/movimientos?limit=10&offset=10

@@ -6,13 +6,13 @@ export class MovimientosController {
     try {
       const { id_producto, tipo_movimiento, cantidad, id_usuario } = req.body;
 
-      if (!["entrada", "salida"].includes(tipo_movimiento)) {
-        return res
-          .status(400)
-          .json({
-            error: "Tipo de movimiento inválido. Use 'entrada' o 'salida'.",
-          });
-      }
+    if (!cantidad || cantidad <= 0) {
+      return res.status(400).json({ error: "La cantidad debe ser un número mayor que 0." });
+    }
+
+    if (!["entrada", "salida"].includes(tipo_movimiento)) {
+      return res.status(400).json({ error: "Tipo de movimiento inválido. Use 'entrada' o 'salida'." });
+    }
 
       const movimiento = await this.movimientosModel.createMovimiento({
         id_producto,
@@ -27,6 +27,7 @@ export class MovimientosController {
       res.status(500).json({ error: error.message });
     }
   };
+  
   getMovimientos = async (req, res) => {
     try {
       const {
@@ -35,6 +36,8 @@ export class MovimientosController {
         tipo_movimiento,
         fecha_inicio,
         fecha_fin,
+        limit,
+        offset,
       } = req.query;
 
       const movimientos = await this.movimientosModel.getMovimientos({
@@ -43,6 +46,8 @@ export class MovimientosController {
         tipo_movimiento,
         fecha_inicio,
         fecha_fin,
+        limit,
+        offset,
       });
 
       res.status(200).json(movimientos);
